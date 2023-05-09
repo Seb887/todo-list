@@ -1,1 +1,1 @@
-const createHeader
+export function createHeader() {}

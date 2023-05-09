@@ -26,9 +26,151 @@
       rel="stylesheet"
     />
   </head>
-  <body class="m-0 p-0 bg-slate-900">
-    <header></header>
-    <main></main>
+  <body class="bg-slate-900 text-gray-300 w-full h-screen">
+    <header
+      class="header flex justify-center p-5 pl-20 pr-20 border-b border-gray-500 bg-slate-800"
+    >
+      <!-- <button>
+        <i
+          class="fa-solid fa-bars text-3xl hover:text-lime-600 z-0"
+          id="menuBtn"
+        ></i>
+      </button> -->
+      <h1 class="headerTitle text-7xl z-10">Todo-List</h1>
+    </header>
+
+    <main class="main flex h-5/6">
+      <aside
+        class="sidebar flex flex-col pt-10 pb-10 w-2/12 bg-slate-700 text-2xl"
+      >
+        <div class="flex justify-start pl-10 pb-10">
+          <button
+            class="flex justify-center items-center w-14 h-14 border rounded-full text-3xl font-extrabold hover:text-lime-600 hover:border-lime-600"
+            id="add"
+          >
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+
+        <section class="timeFilter pl-10 space-y-5">
+          <div id="all">All</div>
+          <div id="today">Today</div>
+          <div id="thisWeek">This Week</div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projectFilter pt-5 over">
+          <!-- Title Porjects -->
+          <h1
+            class="flex justify-between pl-7 pr-7 pt-5 pb-3 text-3xl font-extrabold border-b-2"
+          >
+            <p>Projects</p>
+            <!-- <button
+              class="hover:text-lime-600"
+              id="addProject"
+            >
+              <i class="fa-solid fa-plus"></i>
+            </button> -->
+          </h1>
+
+          <div
+            class="projectsList h-80 pt-5 pl-10 pr-10 space-y-5 overflow-auto"
+          >
+            <div class="flex justify-between items-center">
+              <p>Work</p>
+              <span
+                class="flex justify-center items-center w-6 h-6 text-lg border rounded-full bg-lime-600"
+                >7</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <p>Hobby</p>
+              <span
+                class="flex justify-center items-center w-6 h-6 text-lg border rounded-full bg-lime-600"
+                >3</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <p>Work</p>
+              <span
+                class="flex justify-center items-center w-6 h-6 text-lg border rounded-full bg-lime-600"
+                >7</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <p>Hobby</p>
+              <span
+                class="flex justify-center items-center w-6 h-6 text-lg border rounded-full bg-lime-600"
+                >3</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <p>Work</p>
+              <span
+                class="flex justify-center items-center w-6 h-6 text-lg border rounded-full bg-lime-600"
+                >7</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <p>Hobby</p>
+              <span
+                class="flex justify-center items-center w-6 h-6 text-lg border rounded-full bg-lime-600"
+                >3</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <p>Work</p>
+              <span
+                class="flex justify-center items-center w-6 h-6 text-lg border rounded-full bg-lime-600"
+                >7</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <p>Hobby</p>
+              <span
+                class="flex justify-center items-center w-6 h-6 text-lg border rounded-full bg-lime-600"
+                >3</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <p>Work</p>
+              <span
+                class="flex justify-center items-center w-6 h-6 text-lg border rounded-full bg-lime-600"
+                >7</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <p>Hobby</p>
+              <span
+                class="flex justify-center items-center w-6 h-6 text-lg border rounded-full bg-lime-600"
+                >3</span
+              >
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <section class="content w-10/12 p-10^ bg-slate-500">CONTENT</section>
+    </main>
+
+    <footer
+      class="footer flex justify-center p-2 border-t border-gray-500 text-gray-300 bg-slate-800"
+    >
+      <p class="flex items-center">
+        Copyright ©
+        <script type="text/javascript">
+          const year = new Date();
+          document.write(year.getFullYear());
+        </script>
+        - Seb887
+      </p>
+      <a
+        class="flex items-center pl-2 hover:text-lime-600 no-underline"
+        href="https://github.com/seb887"
+        target="_blank"
+        ><i class="fab fa-github"> </i
+      ></a>
+    </footer>
 
     <script
       type="module"
