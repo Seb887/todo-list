@@ -66,6 +66,7 @@
             class="flex justify-between pl-7 pr-7 pb-3 text-3xl font-extrabold"
           >
             <p>Projects</p>
+            <button id="addProject"><i class="fa-solid fa-plus"></i></button>
           </h1>
           <!-- Projects List -->
           <div
@@ -144,16 +145,63 @@
           </div>
         </section>
       </aside>
-      <!--  Content Section -->
-      <section class="allTasks flex flex-col items-center w-10/12 p-10">
+
+      <!-- ## ALL TASKS Section -->
+      <!-- <section class="allTasks flex flex-col items-center w-10/12 p-10">
         <h1
           class="flex justify-center pt-10 pb-20 text-3xl font-bold underline"
         >
           ALL TASKS
         </h1>
-        <ul class="flex flex-col justify-center w-6/12 min-w-min text-xl">
+        <ul class="flex flex-col justify- gap-3 w-6/12 min-w-min text-xl">
           <li
-            class="grid grid-cols-12 items-center gap-3 p-2 pl-3 pr-3 bg-gray-300 border border-gray-300 hover:border hover:border-gray-500 rounded-md"
+            class="grid grid-cols-12 items-center gap-3 p-2 pl-3 pr-3 bg-gray-300 border border-gray-300 hover:border hover:border-gray-400 rounded-md shadow-sm"
+          >
+            <label
+              for="task-1"
+              class="flex items-center gap-3 col-span-5"
+              ><input
+                type="checkbox"
+                name="task-1"
+                id="task-1"
+                class=""
+              />Task 1</label
+            >
+            <p class="projectLabel col-span-3 col-start-6">Project 1</p>
+            <p class="taskDate flex justify-center col-span-3 col-start-9">
+              11.05.2023
+            </p>
+            <div class="flex justify-between col-start-12">
+              <i class="fa-solid fa-pen-to-square"></i>
+              <i class="fa-solid fa-x"></i>
+            </div>
+          </li>
+
+          <li
+            class="grid grid-cols-12 items-center gap-3 p-2 pl-3 pr-3 bg-gray-300 border border-gray-300 hover:border hover:border-gray-400 rounded-md shadow-sm"
+          >
+            <label
+              for="task-1"
+              class="flex items-center gap-3 col-span-5"
+              ><input
+                type="checkbox"
+                name="task-1"
+                id="task-1"
+                class=""
+              />Task 1</label
+            >
+            <p class="projectLabel col-span-3 col-start-6">Project 1</p>
+            <p class="taskDate flex justify-center col-span-3 col-start-9">
+              11.05.2023
+            </p>
+            <div class="flex justify-between col-start-12">
+              <i class="fa-solid fa-pen-to-square"></i>
+              <i class="fa-solid fa-x"></i>
+            </div>
+          </li>
+
+          <li
+            class="grid grid-cols-12 items-center gap-3 p-2 pl-3 pr-3 bg-gray-300 border border-gray-300 hover:border hover:border-gray-400 rounded-md shadow-sm"
           >
             <label
               for="task-1"
@@ -175,11 +223,11 @@
             </div>
           </li>
         </ul>
-      </section>
+      </section> -->
     </main>
 
     <footer
-      class="footer flex justify-center p-2 border-t border-gray-500 text-gray-300 bg-slate-800"
+      class="footer flex justify-center p-3 border-t border-gray-500 text-gray-300 bg-slate-800"
     >
       <p class="flex items-center">
         Copyright ©

@@ -1,5 +1,5 @@
-import { createFooter } from './footer.js';
+import { createAllTasks } from './modules/all_tasks.js';
 
-const body = document.querySelector('body');
+const main = document.querySelector('.main');
 
-// body.append(createFooter());
+main.append(createAllTasks());
