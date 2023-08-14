@@ -6,48 +6,57 @@ export const tasksArr = [
 let filterName = 'ALL TASKS'; // default
 // filterName = "TODAY'S TASKS";
 
-function addTask() {
-  const addTaskBtn = document.querySelector('#addTask');
+// function addTask() {
+//   const addTaskBtn = document.querySelector('#addTask');
 
-  addTaskBtn.addEventListener('click', openModal());
-}
+//   addTaskBtn.addEventListener('click', openModal());
+// }
 
 export function createTasksSectionHTML() {
-  const section = document.createElement('section');
-  section.classList.add(
+  const taskSection = document.createElement('section');
+  taskSection.classList.add(
     'allTasks',
     'flex',
-    'flex-col',
-    'items-center',
-    'w-10/12',
-    'p-10'
+    // 'flex-col',
+    'justify-center',
+    // 'items-center',
+    'w-full',
+    'm-10'
   );
 
-  const sectionHeader = document.createElement('h1');
-  sectionHeader.classList.add(
+  const taskSectionContainer = document.createElement('div');
+  taskSectionContainer.classList.add(
+    'flex',
+    'flex-col',
+    'w-6/12',
+    'border',
+    'border-gray-500'
+  );
+
+  const taskSectionHeader = document.createElement('h1');
+  taskSectionHeader.classList.add(
     'flex',
     'justify-start',
-    'w-6/12',
+    // 'w-6/12',
     // 'pt-10',
     'pb-5',
     'text-3xl',
     'font-bold'
     // 'underline'
   );
-  sectionHeader.textContent = filterName;
+  taskSectionHeader.textContent = filterName;
 
-  const ulElement = document.createElement('ul');
-  ulElement.classList.add(
+  const taskList = document.createElement('ul');
+  taskList.classList.add('mt-4', 'gap-3', 'w-full', 'text-xl');
+
+  const newTaskContainer = document.createElement('div');
+  newTaskContainer.classList.add(
     'flex',
-    'flex-col',
-    'gap-3',
-    'w-6/12',
-    'min-w-min',
-    'text-xl'
+    'justify-start',
+    'pl-3',
+    'pb-3',
+    'p-3'
   );
-
-  const btnLiElement = document.createElement('li');
-  btnLiElement.classList.add('flex', 'justify-start', 'pl-3', 'pb-3', 'p-3');
 
   const newTaskBtn = document.createElement('button');
   newTaskBtn.classList.add(
@@ -63,17 +72,21 @@ export function createTasksSectionHTML() {
   const plusIcon = document.createElement('i');
   plusIcon.classList.add('fa-solid', 'fa-plus', 'text-2xl');
 
-  section.append(sectionHeader);
   newTaskBtn.prepend(plusIcon);
-  btnLiElement.append(newTaskBtn);
-  ulElement.append(btnLiElement);
-  section.append(ulElement);
+  newTaskContainer.append(newTaskBtn);
+
+  // Seitenstruktur erzeugen
+  taskSectionContainer.append(taskSectionHeader);
+  taskSectionContainer.append(newTaskContainer);
+  taskSectionContainer.append(createModal());
+  taskSectionContainer.append(taskList);
+  taskSection.append(taskSectionContainer);
 
   for (const task of tasksArr) {
-    ulElement.append(createLiElement(task));
+    taskList.append(createLiElement(task));
   }
 
-  return section;
+  return taskSection;
 }
 
 // Listenelement erzeugen
@@ -154,3 +167,62 @@ export function createLiElement(obj) {
 
   return liElement;
 }
+
+// Eingabemaske
+function createModal() {
+  const container = document.createElement('div');
+  container.classList.add(
+    'flex',
+    'justify-start',
+    'p-3',
+    // 'ml-3',
+    'gap-3',
+    'w-full'
+  );
+
+  const inputTitle = document.createElement('input');
+  inputTitle.classList.add(
+    'border',
+    'border-gray-500',
+    'rounded-lg',
+    'p-1',
+    'pl-2',
+    'w-6/12'
+  );
+  inputTitle.type = 'text';
+  inputTitle.placeholder = 'Title';
+
+  const inputDate = document.createElement('input');
+  inputDate.classList.add(
+    'border',
+    'border-gray-500',
+    'rounded-lg',
+    'p-1',
+    'pl-2',
+    'w-6/12'
+  );
+  inputDate.type = 'text';
+  inputDate.placeholder = 'DueDate';
+
+  const agreeBtn = document.createElement('button');
+  agreeBtn.classList.add('text-2xl', 'w-auto');
+  const agreeIcon = document.createElement('i');
+  agreeIcon.classList.add('fa-solid', 'fa-check');
+  agreeBtn.append(agreeIcon);
+
+  const cancelBtn = document.createElement('button');
+  cancelBtn.classList.add('text-xl', 'w-auto');
+  const cancelIcon = document.createElement('i');
+  cancelIcon.classList.add('fa-solid', 'fa-ban');
+  cancelBtn.append(cancelIcon);
+
+  container.append(inputTitle);
+  container.append(inputDate);
+  container.append(agreeBtn);
+  container.append(cancelBtn);
+
+  return container;
+}
+
+// So aufbauen wie Task-ELement
+// Label
