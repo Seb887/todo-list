@@ -1,25 +1,17 @@
 export const tasksArr = [
-  { title: 'Aufgabe 1', project: 'home', date: '22.05.2023' },
-  { title: 'Aufgabe 2', project: 'test', date: '24.05.2023' },
+  { title: 'Aufgabe 1', dueDate: '22.05.2023' },
+  { title: 'Aufgabe 2', dueDate: '24.05.2023' },
 ];
 
 let filterName = 'ALL TASKS'; // default
 // filterName = "TODAY'S TASKS";
-
-// function addTask() {
-//   const addTaskBtn = document.querySelector('#addTask');
-
-//   addTaskBtn.addEventListener('click', openModal());
-// }
 
 export function createTasksSectionHTML() {
   const taskSection = document.createElement('section');
   taskSection.classList.add(
     'allTasks',
     'flex',
-    // 'flex-col',
     'justify-center',
-    // 'items-center',
     'w-full',
     'm-10'
   );
@@ -29,20 +21,22 @@ export function createTasksSectionHTML() {
     'flex',
     'flex-col',
     'w-6/12',
+    'p-10',
+    'bg-gray-300',
     'border',
-    'border-gray-500'
+    'border-gray-500',
+    'rounded-xl',
+    'shadow-xl'
   );
 
   const taskSectionHeader = document.createElement('h1');
   taskSectionHeader.classList.add(
     'flex',
-    'justify-start',
-    // 'w-6/12',
-    // 'pt-10',
+    'justify-center',
     'pb-5',
-    'text-3xl',
-    'font-bold'
-    // 'underline'
+    'text-5xl',
+    'font-black',
+    'font-["Chilanka"]'
   );
   taskSectionHeader.textContent = filterName;
 
@@ -64,9 +58,10 @@ export function createTasksSectionHTML() {
     'justify-start',
     'font-medium',
     'gap-3',
-    'text-2xl'
+    'text-2xl',
+    'hover:scale-105'
   );
-  newTaskBtn.id = 'addTask';
+  newTaskBtn.id = 'addTaskBtn';
   newTaskBtn.textContent = 'New Task';
 
   const plusIcon = document.createElement('i');
@@ -78,7 +73,7 @@ export function createTasksSectionHTML() {
   // Seitenstruktur erzeugen
   taskSectionContainer.append(taskSectionHeader);
   taskSectionContainer.append(newTaskContainer);
-  taskSectionContainer.append(createModal());
+  taskSectionContainer.append(createNewTaskInput());
   taskSectionContainer.append(taskList);
   taskSection.append(taskSectionContainer);
 
@@ -100,13 +95,13 @@ export function createLiElement(obj) {
     'p-2',
     'pl-3',
     'pr-3',
-    'bg-gray-300',
+    // 'bg-gray-400',
     'border',
     'border-gray-300',
-    'hover:border',
-    'hover:border-gray-400',
-    'rounded-md',
-    'shadow-sm'
+    // 'hover:border',
+    // 'hover:border-gray-400',
+    'rounded-md'
+    // 'shadow-sm'
   );
 
   const label = document.createElement('label');
@@ -118,6 +113,7 @@ export function createLiElement(obj) {
   inputElement.type = 'checkbox';
   inputElement.name = 'task-1';
   inputElement.id = 'task-1';
+  inputElement.classList.add('hover:scale-105');
 
   // const projectLabel = document.createElement('p');
   // projectLabel.classList.add('projectLabel', 'col-span-3', 'col-start-6');
@@ -131,7 +127,7 @@ export function createLiElement(obj) {
     'col-span-3',
     'col-start-8'
   );
-  taskDate.textContent = obj.date;
+  taskDate.textContent = obj.dueDate;
 
   const iconsContainer = document.createElement('div');
   iconsContainer.classList.add(
@@ -147,12 +143,14 @@ export function createLiElement(obj) {
   editIcon.classList.add('fa-solid', 'fa-pen-to-square');
 
   const editBtn = document.createElement('button');
+  editBtn.classList.add('hover:scale-105');
   editBtn.id = 'editBtn';
 
   const removeIcon = document.createElement('i');
   removeIcon.classList.add('fa-solid', 'fa-x');
 
   const removeBtn = document.createElement('button');
+  removeBtn.classList.add('hover:scale-105');
   removeBtn.id = 'removeBtn';
 
   editBtn.append(editIcon);
@@ -169,16 +167,20 @@ export function createLiElement(obj) {
 }
 
 // Eingabemaske
-function createModal() {
+function createNewTaskInput() {
   const container = document.createElement('div');
   container.classList.add(
     'flex',
     'justify-start',
     'p-3',
+    // 'pl-0',
+    'pr-0',
     // 'ml-3',
     'gap-3',
-    'w-full'
+    'w-full',
+    'hidden'
   );
+  container.id = 'inputContainer';
 
   const inputTitle = document.createElement('input');
   inputTitle.classList.add(
@@ -189,8 +191,10 @@ function createModal() {
     'pl-2',
     'w-6/12'
   );
+  inputTitle.id = 'inputTitle';
   inputTitle.type = 'text';
   inputTitle.placeholder = 'Title';
+  inputTitle.setAttribute('required', '');
 
   const inputDate = document.createElement('input');
   inputDate.classList.add(
@@ -201,19 +205,23 @@ function createModal() {
     'pl-2',
     'w-6/12'
   );
-  inputDate.type = 'text';
+  inputDate.id = 'inputDate';
+  inputDate.type = 'date';
   inputDate.placeholder = 'DueDate';
+  // inputDate.setAttribute('required', '');
 
   const agreeBtn = document.createElement('button');
-  agreeBtn.classList.add('text-2xl', 'w-auto');
+  agreeBtn.classList.add('text-2xl', 'hover:scale-110', 'w-auto');
+  agreeBtn.id = 'agreeBtn';
   const agreeIcon = document.createElement('i');
-  agreeIcon.classList.add('fa-solid', 'fa-check');
+  agreeIcon.classList.add('fa-solid', 'fa-check', 'text-green-700');
   agreeBtn.append(agreeIcon);
 
   const cancelBtn = document.createElement('button');
-  cancelBtn.classList.add('text-xl', 'w-auto');
+  cancelBtn.classList.add('text-xl', 'hover:scale-110', 'w-auto');
+  cancelBtn.id = 'cancelBtn';
   const cancelIcon = document.createElement('i');
-  cancelIcon.classList.add('fa-solid', 'fa-ban');
+  cancelIcon.classList.add('fa-solid', 'fa-ban', 'text-red-700');
   cancelBtn.append(cancelIcon);
 
   container.append(inputTitle);
@@ -224,5 +232,39 @@ function createModal() {
   return container;
 }
 
-// So aufbauen wie Task-ELement
-// Label
+// --------------
+// --- EVENTS ---
+// --------------
+
+document.addEventListener('DOMContentLoaded', () => {
+  const addTaskBtn = document.querySelector('#addTaskBtn');
+  const agreeBtn = document.querySelector('#agreeBtn');
+  const cancelBtn = document.querySelector('#cancelBtn');
+  const inputContainer = document.querySelector('#inputContainer');
+  const inputTitle = document.querySelector('#inputTitle');
+  const inputDate = document.querySelector('#inputDate');
+
+  // console.log(addTaskBtn);
+
+  addTaskBtn.addEventListener('click', () => openNewTaskInput());
+  agreeBtn.addEventListener('click', () => saveNewTaskInput());
+
+  function openNewTaskInput() {
+    // console.log('New Task Button clicked!');
+    addTaskBtn.classList.add('hidden');
+    inputContainer.classList.remove('hidden');
+  }
+
+  function saveNewTaskInput() {
+    if (inputTitle.value != '') {
+      // TODO: Nachricht "Bitte Titel eingeben!" einbauen
+      tasksArr.push({ title: inputTitle.value, dueDate: inputDate.value });
+      addTaskBtn.classList.remove('hidden');
+      inputContainer.classList.add('hidden');
+    }
+
+    console.log(tasksArr);
+
+    createTasksSectionHTML();
+  }
+});
